@@ -37,11 +37,7 @@ public class TipCalculatorController {
     @FXML
     private TextField totalTextField;
 
-    // calculates and displays the tip and total amounts
-    @FXML
-    private void calculateButtonPressed(ActionEvent event) {
 
-    }
 
     // called by FXMLLoader to initialize the controller
     public void initialize() {
@@ -74,12 +70,27 @@ public class TipCalculatorController {
                     @Override
                     public void changed(ObservableValue<? extends Number> ov,
                                         Number oldValue, Number newValue) {
+
+                        //slider percentage
                         tipPercentage =
                                 BigDecimal.valueOf(newValue.intValue() / 100.0);
                         tipPercentageLabel.setText(percent.format(tipPercentage));
 
+
+                        //If user moves the slider, the tip amount will also update.
+                        BigDecimal amount = new BigDecimal(amountTextField.getText());
+                        BigDecimal tip = amount.multiply(tipPercentage);
+                        BigDecimal total = amount.add(tip);
+                        tipTextField.setText(currency.format(tip));
+
+                        //Adding adjusted tip amount and amount to the final total textfield.
+                        totalTextField.setText(currency.format(total));
+
                     }
-                }  // end of ChangeListner<Number>
+                }
         );
+
+
+
     }
 }
