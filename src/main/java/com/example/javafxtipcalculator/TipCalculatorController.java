@@ -69,6 +69,7 @@ public class TipCalculatorController {
                         tipPercentage =
                                 BigDecimal.valueOf(newValue.intValue() / 100.0);
                         tipPercentageLabel.setText(percent.format(tipPercentage));
+                        //no button branch
                     }
                 }
         );
