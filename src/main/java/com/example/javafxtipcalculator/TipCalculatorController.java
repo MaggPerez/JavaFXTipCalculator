@@ -83,7 +83,7 @@ public class TipCalculatorController {
                         BigDecimal total = amount.add(tip);
                         tipTextField.setText(currency.format(tip));
 
-                        //Adding adjusted tip amount and amount to the final total textfield.
+                        //Adding adjusted tip amount and amount to the final total textfield
                         totalTextField.setText(currency.format(total));
 
                     }
